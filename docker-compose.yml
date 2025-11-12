@@ -42,14 +42,13 @@ services:
       # Java Options
       JAVA_OPTS: -Xmx512m -Xms256m
 
-      # Firebase Config (optional - update path if using Firebase)
-      # FIREBASE_CONFIG_FILE: /etc/secrets/firebase-service-account.json
+      # Firebase Config
+      FIREBASE_CONFIG_FILE: /etc/secrets/firebase-service-account.json
     depends_on:
       postgres:
         condition: service_healthy
-    # Uncomment below if using Firebase secret file
-    # volumes:
-    #   - ./firebase-service-account.json:/etc/secrets/firebase-service-account.json:ro
+    volumes:
+      - ./src/main/resources/firebase-service-account.json:/etc/secrets/firebase-service-account.json:ro
     healthcheck:
       test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8080/api/health || exit 1"]
       interval: 30s

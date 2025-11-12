@@ -24,7 +24,18 @@ public class FirebaseConfig {
     public FirebaseApp initializeFirebase() throws IOException {
         try {
             if (FirebaseApp.getApps().isEmpty()) {
-                InputStream serviceAccount = new ClassPathResource(firebaseConfigFile).getInputStream();
+                InputStream serviceAccount;
+
+                // Check if path is absolute (file system) or relative (classpath)
+                if (firebaseConfigFile.startsWith("/")) {
+                    // Load from file system
+                    serviceAccount = new FileInputStream(firebaseConfigFile);
+                    log.info("Loading Firebase config from file system: {}", firebaseConfigFile);
+                } else {
+                    // Load from classpath
+                    serviceAccount = new ClassPathResource(firebaseConfigFile).getInputStream();
+                    log.info("Loading Firebase config from classpath: {}", firebaseConfigFile);
+                }
 
                 FirebaseOptions options = FirebaseOptions.builder()
                         .setCredentials(GoogleCredentials.fromStream(serviceAccount))
