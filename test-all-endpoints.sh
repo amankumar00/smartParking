@@ -14,7 +14,7 @@ NC='\033[0m' # No Color
 
 # Configuration
 BASE_URL="http://localhost:8080/api"
-FIREBASE_API_KEY="AIzaSyALa0IxLMAevdzo4sTq_goMjcqOftHRQM0"
+# FIREBASE_API_KEY="testing"  # Replace with your Firebase Web API Key
 TEST_EMAIL="test@example.com"
 TEST_PASSWORD="Test123456"
 
