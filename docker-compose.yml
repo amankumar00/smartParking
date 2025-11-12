@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: smartparking-postgres
+    environment:
+      POSTGRES_DB: smartparking
+      POSTGRES_USER: smartparking_user
+      POSTGRES_PASSWORD: smartparking_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U smartparking_user -d smartparking"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Spring Boot Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: smartparking-backend
+    ports:
+      - "8080:8080"
+    environment:
+      # Spring Profile
+      SPRING_PROFILES_ACTIVE: render
+
+      # Database URL (connects to postgres service)
+      DATABASE_URL: postgresql://smartparking_user:smartparking_pass@postgres:5432/smartparking
+
+      # Server Port
+      PORT: 8080
+
+      # Java Options
+      JAVA_OPTS: -Xmx512m -Xms256m
+
+      # Firebase Config (optional - update path if using Firebase)
+      # FIREBASE_CONFIG_FILE: /etc/secrets/firebase-service-account.json
+    depends_on:
+      postgres:
+        condition: service_healthy
+    # Uncomment below if using Firebase secret file
+    # volumes:
+    #   - ./firebase-service-account.json:/etc/secrets/firebase-service-account.json:ro
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:8080/api/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+volumes:
+  postgres_data:
+    driver: local

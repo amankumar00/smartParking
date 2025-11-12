@@ -1,0 +1,60 @@
+# Maven build output
+target/
+!target/smart-parking-backend-1.0.0.jar
+
+# Maven wrapper
+.mvn/
+mvnw
+mvnw.cmd
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+!README.md
+
+# Test files
+src/test/
+
+# Local environment files
+.env
+.env.local
+*.local
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Firebase service account (will be added via Render secrets)
+firebase-service-account.json
+src/main/resources/firebase-service-account.json
+
+# Scripts not needed in container
+test-all-endpoints.sh
+get-firebase-token.sh
+render-build.sh
+render-start.sh

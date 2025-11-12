@@ -17,9 +17,13 @@ A comprehensive backend system for managing parking lot operations built with Ja
 - **Spring Boot 3.2.0**
   - Spring Data JPA
   - Spring Web
+  - Spring Security
   - Spring Validation
+- **Firebase Admin SDK** (Authentication)
 - **H2 Database** (Development)
-- **MySQL** (Production ready)
+- **PostgreSQL** (Production)
+- **MySQL** (Production - Alternative)
+- **Docker** (Containerization)
 - **Lombok**
 - **Maven**
 
@@ -54,11 +58,45 @@ smartParkingBackend/
 
 ### Prerequisites
 
+**Option 1: Docker (Recommended)**
+- Docker Desktop installed ([Get Docker](https://www.docker.com/products/docker-desktop))
+- No need for Java, Maven, or PostgreSQL!
+
+**Option 2: Manual Setup**
 - Java 17 or higher
 - Maven 3.6+
-- MySQL 8.0+ (for production)
+- PostgreSQL 15+ or MySQL 8.0+ (for production)
 
-### Installation
+### Quick Start with Docker
+
+**1. Start everything with one command:**
+```bash
+docker-compose up -d
+```
+
+This will automatically:
+- Start PostgreSQL database
+- Build and start the Spring Boot application
+- Set up networking between containers
+
+**2. Test the application:**
+```bash
+curl http://localhost:8080/api/health
+```
+
+**3. View logs:**
+```bash
+docker-compose logs -f app
+```
+
+**4. Stop everything:**
+```bash
+docker-compose down
+```
+
+📖 **See [DOCKER_QUICKSTART.md](DOCKER_QUICKSTART.md) for complete Docker guide**
+
+### Manual Installation (Without Docker)
 
 1. Clone the repository
 ```bash
@@ -87,10 +125,10 @@ Access H2 database console at: `http://localhost:8080/h2-console`
 
 ### Production Setup
 
-1. Update MySQL credentials in `application-prod.properties`
+1. Update database credentials in `application-prod.properties` or `application-render.properties`
 2. Create database:
 ```sql
-CREATE DATABASE smart_parking;
+CREATE DATABASE smartparking;
 ```
 3. Run with production profile:
 ```bash
@@ -269,6 +307,50 @@ The system is designed for easy extension:
    - Payment gateway integration
    - Mobile app integration
    - Analytics and reporting
+
+## Deployment
+
+### Deploy to Render (Free Hosting)
+
+This application is ready to deploy to [Render](https://render.com) using Docker.
+
+**Quick Deploy:**
+1. Push code to GitHub/GitLab
+2. Create PostgreSQL database on Render
+3. Create Web Service with Docker runtime
+4. Set environment variables
+5. Deploy!
+
+📖 **Complete guides:**
+- [DOCKER_DEPLOYMENT_GUIDE.md](DOCKER_DEPLOYMENT_GUIDE.md) - Full Docker deployment guide
+- [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md) - Step-by-step deployment checklist
+- [RENDER_DEPLOYMENT_GUIDE.md](RENDER_DEPLOYMENT_GUIDE.md) - Original Render guide (non-Docker)
+
+**Deployment Features:**
+- 🐳 Dockerized for consistent deployment
+- 🔄 Auto-deploy on git push
+- 🆓 Free tier available (512 MB RAM, PostgreSQL 1GB)
+- 🔒 HTTPS enabled automatically
+- 📊 Built-in monitoring and logs
+
+### Other Deployment Options
+
+The Docker setup works with:
+- **AWS ECS/Fargate**
+- **Google Cloud Run**
+- **Azure Container Instances**
+- **Heroku**
+- **DigitalOcean App Platform**
+
+See [DOCKER_DEPLOYMENT_GUIDE.md](DOCKER_DEPLOYMENT_GUIDE.md) for platform-specific instructions.
+
+## Documentation
+
+- [HOW_TO_RUN.md](HOW_TO_RUN.md) - Complete guide to run locally
+- [DOCKER_QUICKSTART.md](DOCKER_QUICKSTART.md) - Quick Docker setup (5 minutes)
+- [FIREBASE_SETUP.md](FIREBASE_SETUP.md) - Firebase authentication setup
+- [UML_CLASS_DIAGRAM_REFERENCE.md](UML_CLASS_DIAGRAM_REFERENCE.md) - All classes for UML diagrams
+- [USE_CASE_DIAGRAM_REFERENCE.md](USE_CASE_DIAGRAM_REFERENCE.md) - All use cases
 
 ## Future Enhancements
 
