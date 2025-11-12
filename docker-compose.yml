@@ -32,7 +32,9 @@ services:
       SPRING_PROFILES_ACTIVE: render
 
       # Database URL (connects to postgres service)
-      DATABASE_URL: postgresql://smartparking_user:smartparking_pass@postgres:5432/smartparking
+      DATABASE_URL: jdbc:postgresql://postgres:5432/smartparking
+      DB_USERNAME: smartparking_user
+      DB_PASSWORD: smartparking_pass
 
       # Server Port
       PORT: 8080
