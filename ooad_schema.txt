@@ -1,0 +1,43 @@
+employee:
+        {
+            emp_id: string
+            name : string
+            email : string 
+            ph_no : string
+            dob : datetime
+            gender : string
+            photo : string (wpuld be a link)
+            address : string 
+            roles : string
+        }
+
+vehicle:
+        {
+            vehicleType : string,
+            vehicleRegistration: string,
+            timeIn : timeStamp,
+            timeOut : timeStamp,
+            status : string,
+            billAmt : float,
+            assignedSlot : slotID
+        }
+
+parkingLot:
+            {
+                floor : array of objects
+                        [
+                            {
+                                floorNo: int,
+                                totalSlots: int,
+                                allotedSlots: int,
+                                slot: array of objects
+                                    [
+                                        {
+                                            slotID : string,
+                                            slotStatus : string,
+                                            slotType : string,
+                                        }
+                                    ]
+                            }
+                        ]
+            }
