@@ -52,10 +52,22 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://localhost:4200"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+
+        // Allow frontend origins (local development + production)
+        configuration.setAllowedOrigins(Arrays.asList(
+            "http://localhost:1234",      // Parcel dev server
+            "http://localhost:3000",      // React/Next.js default
+            "http://localhost:4200",      // Angular default
+            "http://127.0.0.1:1234",
+            "http://127.0.0.1:3000",
+            "http://127.0.0.1:4200",
+            "https://smartparking-abxp.onrender.com"  // Production backend (for self-calls)
+        ));
+
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
+        configuration.setMaxAge(3600L);  // Cache preflight requests for 1 hour
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
