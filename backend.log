@@ -1,0 +1,230 @@
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-11-14T20:00:19.863+05:30  INFO 116583 --- [smart-parking-backend] [           main] c.smartparking.SmartParkingApplication   : Starting SmartParkingApplication v1.0.0 using Java 17.0.16 with PID 116583 (/home/hello/Desktop/smartParkingBackend/target/smart-parking-backend-1.0.0.jar started by hello in /home/hello/Desktop/smartParkingBackend)
+2025-11-14T20:00:19.867+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] c.smartparking.SmartParkingApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-11-14T20:00:19.868+05:30  INFO 116583 --- [smart-parking-backend] [           main] c.smartparking.SmartParkingApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-11-14T20:00:20.723+05:30  INFO 116583 --- [smart-parking-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-14T20:00:20.782+05:30  INFO 116583 --- [smart-parking-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51 ms. Found 5 JPA repository interfaces.
+2025-11-14T20:00:21.320+05:30  INFO 116583 --- [smart-parking-backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-11-14T20:00:21.330+05:30  INFO 116583 --- [smart-parking-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-14T20:00:21.330+05:30  INFO 116583 --- [smart-parking-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-11-14T20:00:21.375+05:30  INFO 116583 --- [smart-parking-backend] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-14T20:00:21.376+05:30  INFO 116583 --- [smart-parking-backend] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1420 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2025-11-14T20:00:21.419+05:30  INFO 116583 --- [smart-parking-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-14T20:00:21.685+05:30  INFO 116583 --- [smart-parking-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:smartparking user=SA
+2025-11-14T20:00:21.687+05:30  INFO 116583 --- [smart-parking-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-14T20:00:21.706+05:30  INFO 116583 --- [smart-parking-backend] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:smartparking'
+2025-11-14T20:00:21.764+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] c.s.s.FirebaseAuthenticationFilter       : Filter 'firebaseAuthenticationFilter' configured for use
+2025-11-14T20:00:21.843+05:30  INFO 116583 --- [smart-parking-backend] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-14T20:00:21.901+05:30  INFO 116583 --- [smart-parking-backend] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-11-14T20:00:21.939+05:30  INFO 116583 --- [smart-parking-backend] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-14T20:00:22.168+05:30  INFO 116583 --- [smart-parking-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-14T20:00:22.216+05:30  WARN 116583 --- [smart-parking-backend] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-14T20:00:23.000+05:30  INFO 116583 --- [smart-parking-backend] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-14T20:00:23.012+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] org.hibernate.SQL                        : 
+    drop table if exists employees cascade 
+Hibernate: 
+    drop table if exists employees cascade 
+2025-11-14T20:00:23.016+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] org.hibernate.SQL                        : 
+    drop table if exists floors cascade 
+Hibernate: 
+    drop table if exists floors cascade 
+2025-11-14T20:00:23.016+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] org.hibernate.SQL                        : 
+    drop table if exists parking_lots cascade 
+Hibernate: 
+    drop table if exists parking_lots cascade 
+2025-11-14T20:00:23.016+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] org.hibernate.SQL                        : 
+    drop table if exists parking_slots cascade 
+Hibernate: 
+    drop table if exists parking_slots cascade 
+2025-11-14T20:00:23.016+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] org.hibernate.SQL                        : 
+    drop table if exists vehicles cascade 
+Hibernate: 
+    drop table if exists vehicles cascade 
+2025-11-14T20:00:23.020+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] org.hibernate.SQL                        : 
+    create table employees (
+        dob date,
+        created_at timestamp(6),
+        updated_at timestamp(6),
+        address varchar(500),
+        photo varchar(500),
+        email varchar(255) not null unique,
+        emp_id varchar(255) not null,
+        gender varchar(255) check (gender in ('MALE','FEMALE','OTHER')),
+        name varchar(255) not null,
+        ph_no varchar(255),
+        roles varchar(255) not null,
+        primary key (emp_id)
+    )
+Hibernate: 
+    create table employees (
+        dob date,
+        created_at timestamp(6),
+        updated_at timestamp(6),
+        address varchar(500),
+        photo varchar(500),
+        email varchar(255) not null unique,
+        emp_id varchar(255) not null,
+        gender varchar(255) check (gender in ('MALE','FEMALE','OTHER')),
+        name varchar(255) not null,
+        ph_no varchar(255),
+        roles varchar(255) not null,
+        primary key (emp_id)
+    )
+2025-11-14T20:00:23.031+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] org.hibernate.SQL                        : 
+    create table floors (
+        allotted_slots integer not null,
+        floor_no integer not null,
+        total_slots integer not null,
+        floor_id varchar(255) not null,
+        parking_lot_id varchar(255) not null,
+        primary key (floor_id)
+    )
+Hibernate: 
+    create table floors (
+        allotted_slots integer not null,
+        floor_no integer not null,
+        total_slots integer not null,
+        floor_id varchar(255) not null,
+        parking_lot_id varchar(255) not null,
+        primary key (floor_id)
+    )
+2025-11-14T20:00:23.033+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] org.hibernate.SQL                        : 
+    create table parking_lots (
+        total_floors integer,
+        created_at timestamp(6),
+        updated_at timestamp(6),
+        address varchar(500),
+        name varchar(255) not null,
+        parking_lot_id varchar(255) not null,
+        primary key (parking_lot_id)
+    )
+Hibernate: 
+    create table parking_lots (
+        total_floors integer,
+        created_at timestamp(6),
+        updated_at timestamp(6),
+        address varchar(500),
+        name varchar(255) not null,
+        parking_lot_id varchar(255) not null,
+        primary key (parking_lot_id)
+    )
+2025-11-14T20:00:23.035+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] org.hibernate.SQL                        : 
+    create table parking_slots (
+        floor_id varchar(255) not null,
+        slot_id varchar(255) not null,
+        slot_status varchar(255) not null check (slot_status in ('AVAILABLE','OCCUPIED','RESERVED','MAINTENANCE')),
+        slot_type varchar(255) not null check (slot_type in ('TWO_WHEELER','FOUR_WHEELER','HEAVY_VEHICLE')),
+        primary key (slot_id)
+    )
+Hibernate: 
+    create table parking_slots (
+        floor_id varchar(255) not null,
+        slot_id varchar(255) not null,
+        slot_status varchar(255) not null check (slot_status in ('AVAILABLE','OCCUPIED','RESERVED','MAINTENANCE')),
+        slot_type varchar(255) not null check (slot_type in ('TWO_WHEELER','FOUR_WHEELER','HEAVY_VEHICLE')),
+        primary key (slot_id)
+    )
+2025-11-14T20:00:23.037+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] org.hibernate.SQL                        : 
+    create table vehicles (
+        bill_amt float(53),
+        time_in timestamp(6) not null,
+        time_out timestamp(6),
+        assigned_slot_id varchar(255) unique,
+        status varchar(255) not null check (status in ('PARKED','EXITED','IN_PROCESS')),
+        vehicle_id varchar(255) not null,
+        vehicle_registration varchar(255) not null,
+        vehicle_type varchar(255) not null check (vehicle_type in ('TWO_WHEELER','FOUR_WHEELER','HEAVY_VEHICLE')),
+        primary key (vehicle_id)
+    )
+Hibernate: 
+    create table vehicles (
+        bill_amt float(53),
+        time_in timestamp(6) not null,
+        time_out timestamp(6),
+        assigned_slot_id varchar(255) unique,
+        status varchar(255) not null check (status in ('PARKED','EXITED','IN_PROCESS')),
+        vehicle_id varchar(255) not null,
+        vehicle_registration varchar(255) not null,
+        vehicle_type varchar(255) not null check (vehicle_type in ('TWO_WHEELER','FOUR_WHEELER','HEAVY_VEHICLE')),
+        primary key (vehicle_id)
+    )
+2025-11-14T20:00:23.040+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] org.hibernate.SQL                        : 
+    alter table if exists floors 
+       add constraint FK9o9d21ndox2oqaqo70maj88ao 
+       foreign key (parking_lot_id) 
+       references parking_lots
+Hibernate: 
+    alter table if exists floors 
+       add constraint FK9o9d21ndox2oqaqo70maj88ao 
+       foreign key (parking_lot_id) 
+       references parking_lots
+2025-11-14T20:00:23.051+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] org.hibernate.SQL                        : 
+    alter table if exists parking_slots 
+       add constraint FKlwqj0vlq3y26h4ikgaboijwiq 
+       foreign key (floor_id) 
+       references floors
+Hibernate: 
+    alter table if exists parking_slots 
+       add constraint FKlwqj0vlq3y26h4ikgaboijwiq 
+       foreign key (floor_id) 
+       references floors
+2025-11-14T20:00:23.053+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] org.hibernate.SQL                        : 
+    alter table if exists vehicles 
+       add constraint FK45lkvta2qbly58wxes6x2wac1 
+       foreign key (assigned_slot_id) 
+       references parking_slots
+Hibernate: 
+    alter table if exists vehicles 
+       add constraint FK45lkvta2qbly58wxes6x2wac1 
+       foreign key (assigned_slot_id) 
+       references parking_slots
+2025-11-14T20:00:23.058+05:30  INFO 116583 --- [smart-parking-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-14T20:00:23.437+05:30  INFO 116583 --- [smart-parking-backend] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-11-14T20:00:23.874+05:30  INFO 116583 --- [smart-parking-backend] [           main] com.smartparking.config.FirebaseConfig   : Loading Firebase config from classpath: firebase-service-account.json
+2025-11-14T20:00:23.954+05:30  INFO 116583 --- [smart-parking-backend] [           main] com.smartparking.config.FirebaseConfig   : Firebase has been initialized successfully
+2025-11-14T20:00:24.012+05:30  WARN 116583 --- [smart-parking-backend] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-14T20:00:24.033+05:30  WARN 116583 --- [smart-parking-backend] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: ebf9bc6b-d78f-4d28-8535-3aed0e72db93
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-11-14T20:00:24.353+05:30  INFO 116583 --- [smart-parking-backend] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6c8b6782, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4ceac22d, org.springframework.security.web.context.SecurityContextHolderFilter@616b2b2, org.springframework.security.web.header.HeaderWriterFilter@6dabad5c, org.springframework.web.filter.CorsFilter@598f065f, org.springframework.security.web.authentication.logout.LogoutFilter@30367620, com.smartparking.security.FirebaseAuthenticationFilter@3b481bf5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@51cf17e8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7abeaed0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@21f48f6c, org.springframework.security.web.session.SessionManagementFilter@353ac1ef, org.springframework.security.web.access.ExceptionTranslationFilter@21b508a0, org.springframework.security.web.access.intercept.AuthorizationFilter@5acf51d7]
+2025-11-14T20:00:24.688+05:30  INFO 116583 --- [smart-parking-backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-11-14T20:00:24.702+05:30  INFO 116583 --- [smart-parking-backend] [           main] c.smartparking.SmartParkingApplication   : Started SmartParkingApplication in 5.278 seconds (process running for 5.772)
+2025-11-14T20:00:24.774+05:30 DEBUG 116583 --- [smart-parking-backend] [           main] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        parking_lots pl1_0
+Hibernate: 
+    select
+        count(*) 
+    from
+        parking_lots pl1_0
+2025-11-14T20:00:24.795+05:30  INFO 116583 --- [smart-parking-backend] [           main] c.smartparking.config.DataInitializer    : Parking data already exists. Skipping initialization.
+Exception in thread "SpringApplicationShutdownHook" java.lang.NoClassDefFoundError: ch/qos/logback/classic/spi/ThrowableProxy
+	at ch.qos.logback.classic.spi.LoggingEvent.<init>(LoggingEvent.java:143)
+	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:424)
+	at ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus(Logger.java:386)
+	at ch.qos.logback.classic.Logger.log(Logger.java:780)
+	at org.apache.commons.logging.LogAdapter$Slf4jLocationAwareLog.warn(LogAdapter.java:445)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1081)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1037)
+	at org.springframework.boot.SpringApplicationShutdownHook.closeAndWait(SpringApplicationShutdownHook.java:145)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:114)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.ClassNotFoundException: ch.qos.logback.classic.spi.ThrowableProxy
+	... 12 more

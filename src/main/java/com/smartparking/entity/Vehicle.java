@@ -29,7 +29,7 @@ public class Vehicle {
     private VehicleType vehicleType;
 
     @NotBlank(message = "Vehicle registration is required")
-    @Column(name = "vehicle_registration", nullable = false, unique = true)
+    @Column(name = "vehicle_registration", nullable = false)
     private String vehicleRegistration;
 
     @Column(name = "time_in", nullable = false)

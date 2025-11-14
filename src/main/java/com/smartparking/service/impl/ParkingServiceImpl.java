@@ -1,5 +1,6 @@
 package com.smartparking.service.impl;
 
+import com.smartparking.dto.request.BillUpdateRequest;
 import com.smartparking.dto.request.VehicleEntryRequest;
 import com.smartparking.dto.response.VehicleResponse;
 import com.smartparking.entity.ParkingSlot;
@@ -51,14 +52,30 @@ public class ParkingServiceImpl implements ParkingService {
                 .orElseThrow(() -> new NoAvailableSlotException(
                         "No available slot for " + request.getVehicleType()));
 
-        // Create vehicle entry
-        Vehicle vehicle = Vehicle.builder()
-                .vehicleType(request.getVehicleType())
-                .vehicleRegistration(request.getVehicleRegistration())
-                .timeIn(LocalDateTime.now())
-                .status(VehicleStatus.PARKED)
-                .assignedSlot(availableSlot)
-                .build();
+        // Check if vehicle has exited before - if so, reuse the record for new parking session
+        Vehicle vehicle = vehicleRepository.findByVehicleRegistrationAndStatus(
+                        request.getVehicleRegistration(),
+                        VehicleStatus.EXITED)
+                .orElse(null);
+
+        if (vehicle != null) {
+            // Reuse existing vehicle record - reset for new parking session
+            vehicle.setVehicleType(request.getVehicleType());
+            vehicle.setTimeIn(LocalDateTime.now());
+            vehicle.setTimeOut(null);
+            vehicle.setStatus(VehicleStatus.PARKED);
+            vehicle.setBillAmt(null);
+            vehicle.setAssignedSlot(availableSlot);
+        } else {
+            // Create new vehicle entry for first-time visitor
+            vehicle = Vehicle.builder()
+                    .vehicleType(request.getVehicleType())
+                    .vehicleRegistration(request.getVehicleRegistration())
+                    .timeIn(LocalDateTime.now())
+                    .status(VehicleStatus.PARKED)
+                    .assignedSlot(availableSlot)
+                    .build();
+        }
 
         vehicle = vehicleRepository.save(vehicle);
 
@@ -113,6 +130,29 @@ public class ParkingServiceImpl implements ParkingService {
         Vehicle vehicle = vehicleRepository.findByVehicleRegistration(vehicleRegistration)
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Vehicle not found with registration: " + vehicleRegistration));
+        return mapToResponse(vehicle);
+    }
+
+    @Override
+    @Transactional
+    public VehicleResponse updateBillAmount(String vehicleId, BillUpdateRequest request) {
+        // Find the vehicle by ID
+        Vehicle vehicle = vehicleRepository.findById(vehicleId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Vehicle not found with ID: " + vehicleId));
+
+        // Validate that vehicle has exited (can only update bill for exited vehicles)
+        if (vehicle.getStatus() != VehicleStatus.EXITED) {
+            throw new InvalidOperationException(
+                    "Cannot update bill for vehicle that has not exited");
+        }
+
+        // Update the bill amount
+        vehicle.setBillAmt(request.getBillAmt());
+
+        // Save the updated vehicle
+        vehicle = vehicleRepository.save(vehicle);
+
         return mapToResponse(vehicle);
     }
 

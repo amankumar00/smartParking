@@ -1,5 +1,6 @@
 package com.smartparking.controller;
 
+import com.smartparking.dto.request.BillUpdateRequest;
 import com.smartparking.dto.request.VehicleEntryRequest;
 import com.smartparking.dto.response.ApiResponse;
 import com.smartparking.dto.response.VehicleResponse;
@@ -38,5 +39,13 @@ public class ParkingController {
             @PathVariable String vehicleRegistration) {
         VehicleResponse response = parkingService.getVehicleByRegistration(vehicleRegistration);
         return ResponseEntity.ok(ApiResponse.success("Vehicle retrieved successfully", response));
+    }
+
+    @PutMapping("/bill/{vehicleId}")
+    public ResponseEntity<ApiResponse<VehicleResponse>> updateBillAmount(
+            @PathVariable String vehicleId,
+            @Valid @RequestBody BillUpdateRequest request) {
+        VehicleResponse response = parkingService.updateBillAmount(vehicleId, request);
+        return ResponseEntity.ok(ApiResponse.success("Bill amount updated successfully", response));
     }
 }
