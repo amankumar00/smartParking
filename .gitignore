@@ -40,3 +40,9 @@ application-local.properties
 
 ### Firebase ###
 src/main/resources/firebase-service-account.json
+
+### H2 Database Files ###
+data/
+*.db
+*.mv.db
+*.trace.db

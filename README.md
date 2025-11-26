@@ -116,12 +116,14 @@ mvn spring-boot:run
 
 The application will start on `http://localhost:8080`
 
-### H2 Console
+### H2 Console (Development Database)
 
 Access H2 database console at: `http://localhost:8080/h2-console`
-- JDBC URL: `jdbc:h2:mem:smartparking`
+- JDBC URL: `jdbc:h2:file:./data/smartparking`
 - Username: `sa`
 - Password: (leave empty)
+
+**Note**: The database is file-based and persists between restarts. Database files are stored in the `data/` directory.
 
 ### Production Setup
 
